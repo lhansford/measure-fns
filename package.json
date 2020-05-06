@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Functions for conversion and handling of measurements",
   "main": "dist/index.js",
-  "author": "Luke Hansford",
+  "author": "Luke Hansford <mail@lukehansford.me>",
   "license": "MIT",
+  "repository": "https://github.com/lhansford/measure-fns",
   "scripts": {
     "build": "rollup --config ./config/rollup.config.js",
     "lint": "node_modules/eslint/bin/eslint.js src --ext .js,.ts",
