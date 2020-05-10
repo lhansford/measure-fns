@@ -1,10 +1,11 @@
-import { IMeasurement, MeasurementType } from './interfaces';
+import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import {
   PASCALS_IN_HECTOPASCAL,
   PASCALS_IN_BAR,
   PASCALS_IN_MILLIBAR,
   PASCALS_IN_MMHG,
 } from './constants/conversions';
+import { applyOptions } from './utilities';
 
 export enum PressureUnit {
   pascal = 'pa',
@@ -52,19 +53,22 @@ export function createPressure(value: number, unit: PressureUnit = PressureUnit.
   }
 }
 
-export function pressureToPascal(pressure: IPressure): number {
-  return pressure.value;
+export function pressureToPascal(pressure: IPressure, options: ConversionOptions = {}): number {
+  return applyOptions(pressure.value, options);
 }
 
-export function pressureToHectopascal(pressure: IPressure): number {
-  return pressure.value / PASCALS_IN_HECTOPASCAL;
+export function pressureToHectopascal(
+  pressure: IPressure,
+  options: ConversionOptions = {},
+): number {
+  return applyOptions(pressure.value / PASCALS_IN_HECTOPASCAL, options);
 }
-export function pressureToBar(pressure: IPressure): number {
-  return pressure.value / PASCALS_IN_BAR;
+export function pressureToBar(pressure: IPressure, options: ConversionOptions = {}): number {
+  return applyOptions(pressure.value / PASCALS_IN_BAR, options);
 }
-export function pressureToMillibar(pressure: IPressure): number {
-  return pressure.value / PASCALS_IN_MILLIBAR;
+export function pressureToMillibar(pressure: IPressure, options: ConversionOptions = {}): number {
+  return applyOptions(pressure.value / PASCALS_IN_MILLIBAR, options);
 }
-export function pressureToMmhg(pressure: IPressure): number {
-  return pressure.value / PASCALS_IN_MMHG;
+export function pressureToMmhg(pressure: IPressure, options: ConversionOptions = {}): number {
+  return applyOptions(pressure.value / PASCALS_IN_MMHG, options);
 }

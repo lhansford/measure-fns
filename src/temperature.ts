@@ -1,4 +1,5 @@
-import { IMeasurement, MeasurementType } from './interfaces';
+import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
+import { applyOptions } from './utilities';
 
 export enum TemperatureUnit {
   kelvin = 'k',
@@ -38,15 +39,24 @@ export function createTemperature(
   }
 }
 
-export function temperatureToKelvin(temperature: ITemperature): number {
-  return temperature.value;
+export function temperatureToKelvin(
+  temperature: ITemperature,
+  options: ConversionOptions = {},
+): number {
+  return applyOptions(temperature.value, options);
 }
 
-export function temperatureToCelsius(temperature: ITemperature): number {
-  return temperature.value - KELIN_OFFSET;
+export function temperatureToCelsius(
+  temperature: ITemperature,
+  options: ConversionOptions = {},
+): number {
+  return applyOptions(temperature.value - KELIN_OFFSET, options);
 }
 
-export function temperatureToFahrenheit(temperature: ITemperature): number {
+export function temperatureToFahrenheit(
+  temperature: ITemperature,
+  options: ConversionOptions = {},
+): number {
   // eslint-disable-next-line no-magic-numbers
-  return (temperature.value - KELIN_OFFSET) * (9 / 5) + 32;
+  return applyOptions((temperature.value - KELIN_OFFSET) * (9 / 5) + 32, options);
 }
