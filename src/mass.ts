@@ -1,5 +1,6 @@
-import { IMeasurement, MeasurementType } from './interfaces';
+import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import { GRAMS_IN_KILOGRAM, POUNDS_IN_KILOGRAM, OUNCES_IN_KILOGRAM } from './constants/conversions';
+import { applyOptions } from './utilities';
 
 export enum MassUnit {
   kilograms = 'kg',
@@ -40,18 +41,18 @@ export function createMass(value: number, unit: MassUnit = MassUnit.kilograms): 
   }
 }
 
-export function massToKilograms(_mass: IMass): number {
-  return _mass.value;
+export function massToKilograms(_mass: IMass, options: ConversionOptions = {}): number {
+  return applyOptions(_mass.value, options);
 }
 
-export function massToGrams(_mass: IMass): number {
-  return _mass.value * GRAMS_IN_KILOGRAM;
+export function massToGrams(_mass: IMass, options: ConversionOptions = {}): number {
+  return applyOptions(_mass.value * GRAMS_IN_KILOGRAM, options);
 }
 
-export function massToPounds(_mass: IMass): number {
-  return _mass.value * POUNDS_IN_KILOGRAM;
+export function massToPounds(_mass: IMass, options: ConversionOptions = {}): number {
+  return applyOptions(_mass.value * POUNDS_IN_KILOGRAM, options);
 }
 
-export function massToOunces(_mass: IMass): number {
-  return _mass.value * OUNCES_IN_KILOGRAM;
+export function massToOunces(_mass: IMass, options: ConversionOptions = {}): number {
+  return applyOptions(_mass.value * OUNCES_IN_KILOGRAM, options);
 }

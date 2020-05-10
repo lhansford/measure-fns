@@ -1,11 +1,18 @@
 {
   "name": "measure-fns",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Functions for conversion and handling of measurements",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Luke Hansford <mail@lukehansford.me>",
   "license": "MIT",
-  "repository": "https://github.com/lhansford/measure-fns",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhansford/measure-fns.git"
+  },
   "scripts": {
     "build": "rollup --config ./config/rollup.config.js",
     "lint": "node_modules/eslint/bin/eslint.js src --ext .js,.ts",
@@ -37,5 +44,16 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "typescript": "^3.8.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/lhansford/measure-fns/issues"
+  },
+  "homepage": "https://github.com/lhansford/measure-fns#readme",
+  "keywords": [
+    "measurements",
+    "measure",
+    "conversion",
+    "weights",
+    "functional"
+  ]
 }

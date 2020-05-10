@@ -11,3 +11,7 @@ export interface IMeasurement {
   /* SI units */
   value: number;
 }
+
+export interface ConversionOptions {
+  round?: number | boolean;
+}

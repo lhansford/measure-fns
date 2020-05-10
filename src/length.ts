@@ -1,5 +1,6 @@
-import { IMeasurement, MeasurementType } from './interfaces';
+import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import { CENTIMETRES_IN_METRE, FEET_IN_METRE, INCHES_IN_METRE } from './constants/conversions';
+import { applyOptions } from './utilities';
 
 export enum LengthUnit {
   metres = 'm',
@@ -40,18 +41,18 @@ export function createLength(value: number, unit: LengthUnit = LengthUnit.metres
   }
 }
 
-export function lengthToMetres(_length: ILength): number {
-  return _length.value;
+export function lengthToMetres(_length: ILength, options: ConversionOptions = {}): number {
+  return applyOptions(_length.value, options);
 }
 
-export function lengthToCentimetres(_length: ILength): number {
-  return _length.value * CENTIMETRES_IN_METRE;
+export function lengthToCentimetres(_length: ILength, options: ConversionOptions = {}): number {
+  return applyOptions(_length.value * CENTIMETRES_IN_METRE, options);
 }
 
-export function lengthToFeet(_length: ILength): number {
-  return _length.value * FEET_IN_METRE;
+export function lengthToFeet(_length: ILength, options: ConversionOptions = {}): number {
+  return applyOptions(_length.value * FEET_IN_METRE, options);
 }
 
-export function lengthToInches(_length: ILength): number {
-  return _length.value * INCHES_IN_METRE;
+export function lengthToInches(_length: ILength, options: ConversionOptions = {}): number {
+  return applyOptions(_length.value * INCHES_IN_METRE, options);
 }

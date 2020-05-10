@@ -1,4 +1,4 @@
-import { IMeasurement, MeasurementType } from './interfaces';
+import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import {
   SECONDS_IN_HOUR,
   KILOMETRES_IN_METRE,
@@ -6,6 +6,7 @@ import {
   NAUTICAL_MILES_IN_METRE,
   FEET_IN_METRE,
 } from './constants/conversions';
+import { applyOptions } from './utilities';
 
 export enum SpeedUnit {
   metresPerSecond = 'ms',
@@ -54,19 +55,19 @@ export function createSpeed(value: number, unit: SpeedUnit = SpeedUnit.metresPer
   }
 }
 
-export function speedToMs(speed: ISpeed): number {
-  return speed.value;
+export function speedToMs(speed: ISpeed, options: ConversionOptions = {}): number {
+  return applyOptions(speed.value, options);
 }
 
-export function speedToKmh(speed: ISpeed): number {
-  return speed.value * SECONDS_IN_HOUR * KILOMETRES_IN_METRE;
+export function speedToKmh(speed: ISpeed, options: ConversionOptions = {}): number {
+  return applyOptions(speed.value * SECONDS_IN_HOUR * KILOMETRES_IN_METRE, options);
 }
-export function speedToMph(speed: ISpeed): number {
-  return speed.value * SECONDS_IN_HOUR * MILES_IN_METRE;
+export function speedToMph(speed: ISpeed, options: ConversionOptions = {}): number {
+  return applyOptions(speed.value * SECONDS_IN_HOUR * MILES_IN_METRE, options);
 }
-export function speedToKnots(speed: ISpeed): number {
-  return speed.value * SECONDS_IN_HOUR * NAUTICAL_MILES_IN_METRE;
+export function speedToKnots(speed: ISpeed, options: ConversionOptions = {}): number {
+  return applyOptions(speed.value * SECONDS_IN_HOUR * NAUTICAL_MILES_IN_METRE, options);
 }
-export function speedToFps(speed: ISpeed): number {
-  return speed.value * FEET_IN_METRE;
+export function speedToFps(speed: ISpeed, options: ConversionOptions = {}): number {
+  return applyOptions(speed.value * FEET_IN_METRE, options);
 }
