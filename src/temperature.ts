@@ -1,5 +1,9 @@
+import NP from 'number-precision';
+
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import { applyOptions } from './utilities';
+
+NP.enableBoundaryChecking(false);
 
 export enum TemperatureUnit {
   kelvin = 'k',
@@ -15,12 +19,12 @@ export interface ITemperature extends IMeasurement {
 }
 
 function celsiusToKelvin(value: number): number {
-  return value + KELIN_OFFSET;
+  return NP.plus(value, KELIN_OFFSET);
 }
 
 function fahrenheitToKelvin(value: number): number {
   // eslint-disable-next-line no-magic-numbers
-  return (value - 32) * (5 / 9) + KELIN_OFFSET;
+  return NP.plus(NP.times(NP.minus(value, 32), NP.divide(5, 9)), KELIN_OFFSET);
 }
 
 export function createTemperature(
@@ -50,13 +54,16 @@ export function temperatureToCelsius(
   temperature: ITemperature,
   options: ConversionOptions = {},
 ): number {
-  return applyOptions(temperature.value - KELIN_OFFSET, options);
+  return applyOptions(NP.minus(temperature.value, KELIN_OFFSET), options);
 }
 
 export function temperatureToFahrenheit(
   temperature: ITemperature,
   options: ConversionOptions = {},
 ): number {
-  // eslint-disable-next-line no-magic-numbers
-  return applyOptions((temperature.value - KELIN_OFFSET) * (9 / 5) + 32, options);
+  return applyOptions(
+    // eslint-disable-next-line no-magic-numbers
+    NP.plus(NP.times(NP.minus(temperature.value, KELIN_OFFSET), NP.divide(9, 5)), 32),
+    options,
+  );
 }
