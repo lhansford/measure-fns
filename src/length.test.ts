@@ -31,7 +31,7 @@ describe('createLength', () => {
 
   describe('When the unit is inches', () => {
     it('Returns converts it to SI units', () => {
-      expect(createLength(1, LengthUnit.inches).value).toBe(0.025399986284007407);
+      expect(createLength(1, LengthUnit.inches).value).toBe(0.025399986284007404);
       expect(createLength(1, LengthUnit.inches).type).toBe('length');
     });
   });

@@ -1,6 +1,10 @@
+import NP from 'number-precision';
+
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import { CENTIMETRES_IN_METRE, FEET_IN_METRE, INCHES_IN_METRE } from './constants/conversions';
 import { applyOptions } from './utilities';
+
+NP.enableBoundaryChecking(false);
 
 export enum LengthUnit {
   metres = 'm',
@@ -15,15 +19,15 @@ export interface ILength extends IMeasurement {
 }
 
 function centimetresToMetres(value: number): number {
-  return value / CENTIMETRES_IN_METRE;
+  return NP.divide(value, CENTIMETRES_IN_METRE);
 }
 
 function feetToMetres(value: number): number {
-  return value / FEET_IN_METRE;
+  return NP.divide(value, FEET_IN_METRE);
 }
 
 function inchesToMetres(value: number): number {
-  return value / INCHES_IN_METRE;
+  return NP.divide(value, INCHES_IN_METRE);
 }
 
 export function createLength(value: number, unit: LengthUnit = LengthUnit.metres): ILength {
@@ -46,13 +50,13 @@ export function lengthToMetres(_length: ILength, options: ConversionOptions = {}
 }
 
 export function lengthToCentimetres(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(_length.value * CENTIMETRES_IN_METRE, options);
+  return applyOptions(NP.times(_length.value, CENTIMETRES_IN_METRE), options);
 }
 
 export function lengthToFeet(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(_length.value * FEET_IN_METRE, options);
+  return applyOptions(NP.times(_length.value, FEET_IN_METRE), options);
 }
 
 export function lengthToInches(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(_length.value * INCHES_IN_METRE, options);
+  return applyOptions(NP.times(_length.value, INCHES_IN_METRE), options);
 }

@@ -32,14 +32,14 @@ describe('createSpeed', () => {
 
   describe('When the unit is miles per hour', () => {
     it('Returns converts it to SI units', () => {
-      expect(createSpeed(1, SpeedUnit.milesPerHour).value).toBe(0.4470401383034898);
+      expect(createSpeed(1, SpeedUnit.milesPerHour).value).toBe(0.4470401383034899);
       expect(createSpeed(1, SpeedUnit.milesPerHour).type).toBe('speed');
     });
   });
 
   describe('When the unit is knots', () => {
     it('Returns converts it to SI units', () => {
-      expect(createSpeed(1, SpeedUnit.knots).value).toBe(0.5144442571867348);
+      expect(createSpeed(1, SpeedUnit.knots).value).toBe(0.5144442571867349);
       expect(createSpeed(1, SpeedUnit.knots).type).toBe('speed');
     });
   });
@@ -65,8 +65,8 @@ describe('speedToKmh', () => {
 });
 
 describe('speedToMph', () => {
-  it('Converts the speed to miles per hoour', () => {
-    expect(speedToMph(oneMeterPerSecond)).toBe(2.2369356000000002);
+  it('Converts the speed to miles per hour', () => {
+    expect(speedToMph(oneMeterPerSecond)).toBe(2.2369356);
   });
 });
 

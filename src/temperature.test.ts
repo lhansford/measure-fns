@@ -23,7 +23,7 @@ describe('createTemperature', () => {
 
   describe('When the unit is fahrenheit', () => {
     it('Returns converts it to SI units', () => {
-      expect(createTemperature(1, TemperatureUnit.fahrenheit).value).toBe(255.92777777777775);
+      expect(createTemperature(1, TemperatureUnit.fahrenheit).value).toBe(255.9277777777778);
       expect(createTemperature(1, TemperatureUnit.fahrenheit).type).toBe('temperature');
     });
   });
@@ -43,6 +43,6 @@ describe('temperatureToCelsius', () => {
 
 describe('temperatureToFahrenheit', () => {
   it('Converts the temperature to fahrenheit', () => {
-    expect(temperatureToFahrenheit(oneKelvin)).toBe(-457.86999999999995);
+    expect(temperatureToFahrenheit(oneKelvin)).toBe(-457.87);
   });
 });
