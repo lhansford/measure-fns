@@ -1,6 +1,10 @@
+import NP from 'number-precision';
+
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import { GRAMS_IN_KILOGRAM, POUNDS_IN_KILOGRAM, OUNCES_IN_KILOGRAM } from './constants/conversions';
 import { applyOptions } from './utilities';
+
+NP.enableBoundaryChecking(false);
 
 export enum MassUnit {
   kilograms = 'kg',
@@ -15,15 +19,15 @@ export interface IMass extends IMeasurement {
 }
 
 function gramsToKilograms(value: number): number {
-  return value / GRAMS_IN_KILOGRAM;
+  return NP.divide(value, GRAMS_IN_KILOGRAM);
 }
 
 function poundsToKilograms(value: number): number {
-  return value / POUNDS_IN_KILOGRAM;
+  return NP.divide(value, POUNDS_IN_KILOGRAM);
 }
 
 function ouncesToKilograms(value: number): number {
-  return value / OUNCES_IN_KILOGRAM;
+  return NP.divide(value, OUNCES_IN_KILOGRAM);
 }
 
 export function createMass(value: number, unit: MassUnit = MassUnit.kilograms): IMass {
@@ -46,13 +50,13 @@ export function massToKilograms(_mass: IMass, options: ConversionOptions = {}): 
 }
 
 export function massToGrams(_mass: IMass, options: ConversionOptions = {}): number {
-  return applyOptions(_mass.value * GRAMS_IN_KILOGRAM, options);
+  return applyOptions(NP.times(_mass.value, GRAMS_IN_KILOGRAM), options);
 }
 
 export function massToPounds(_mass: IMass, options: ConversionOptions = {}): number {
-  return applyOptions(_mass.value * POUNDS_IN_KILOGRAM, options);
+  return applyOptions(NP.times(_mass.value, POUNDS_IN_KILOGRAM), options);
 }
 
 export function massToOunces(_mass: IMass, options: ConversionOptions = {}): number {
-  return applyOptions(_mass.value * OUNCES_IN_KILOGRAM, options);
+  return applyOptions(NP.times(_mass.value, OUNCES_IN_KILOGRAM), options);
 }

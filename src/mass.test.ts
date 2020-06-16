@@ -31,7 +31,7 @@ describe('createMass', () => {
 
   describe('When the unit is ounces', () => {
     it('Returns converts it to SI units', () => {
-      expect(createMass(1000, MassUnit.ounces).value).toBe(28.34952316484755);
+      expect(createMass(1000, MassUnit.ounces).value).toBe(28.349523164847557);
       expect(createMass(1000, MassUnit.ounces).type).toBe('mass');
     });
   });

@@ -55,5 +55,8 @@
     "conversion",
     "weights",
     "functional"
-  ]
+  ],
+  "dependencies": {
+    "number-precision": "^1.4.0"
+  }
 }

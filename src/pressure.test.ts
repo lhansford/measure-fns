@@ -71,6 +71,6 @@ describe('pressureToMillibar', () => {
 
 describe('pressureToMmhg', () => {
   it('Converts the pressure to mmHg', () => {
-    expect(pressureToMmhg(onePascal)).toBe(0.007500637554192106);
+    expect(pressureToMmhg(onePascal)).toBe(0.007500637554192107);
   });
 });
