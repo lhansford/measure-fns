@@ -6,6 +6,8 @@ import {
   lengthToFeet,
   lengthToInches,
   LengthUnit,
+  lengthToKilometres,
+  lengthToMiles,
 } from './length';
 
 const oneMetreLength = createLength(1);
@@ -42,6 +44,24 @@ describe('createLength', () => {
 
     itConvertsAsARatio((n) => createLength(n, LengthUnit.inches).value);
   });
+
+  describe('When the unit is kilometres', () => {
+    it('Returns converts it to SI units', () => {
+      expect(createLength(1, LengthUnit.kilometres).value).toBe(1000);
+      expect(createLength(1, LengthUnit.kilometres).type).toBe('length');
+    });
+
+    itConvertsAsARatio((n) => createLength(n, LengthUnit.kilometres).value);
+  });
+
+  describe('When the unit is miles', () => {
+    it('Returns converts it to SI units', () => {
+      expect(createLength(1, LengthUnit.miles).value).toBe(1609.3444978925634);
+      expect(createLength(1, LengthUnit.miles).type).toBe('length');
+    });
+
+    itConvertsAsARatio((n) => createLength(n, LengthUnit.miles).value);
+  });
 });
 
 describe('lengthToMetres', () => {
@@ -74,4 +94,20 @@ describe('lengthToInches', () => {
   });
 
   itConvertsAsARatio((n) => lengthToInches(createLength(n)));
+});
+
+describe('lengthToKilometres', () => {
+  it('Converts the length to km', () => {
+    expect(lengthToKilometres(oneMetreLength)).toBe(0.001);
+  });
+
+  itConvertsAsARatio((n) => lengthToKilometres(createLength(n)));
+});
+
+describe('lengthToMiles', () => {
+  it('Converts the length to miles', () => {
+    expect(lengthToMiles(oneMetreLength)).toBe(0.000621371);
+  });
+
+  itConvertsAsARatio((n) => lengthToMiles(createLength(n)));
 });
