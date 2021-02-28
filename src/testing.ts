@@ -25,7 +25,7 @@ export function itConvertsAsARatio(testFunc: (number: number) => number): void {
   describe('When original value is negative', () => {
     it('Converts to a negative value', () => {
       fc.assert(
-        fc.property(fc.integer(0), fc.float(), (int, float) => {
+        fc.property(fc.integer(0), fc.float({ min: 0.000000001 }), (int, float) => {
           expect(testFunc(int - float)).toBeLessThan(0);
         }),
       );
