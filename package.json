@@ -1,6 +1,6 @@
 {
   "name": "measure-fns",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Functions for conversion and handling of measurements",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,6 +38,7 @@
     "eslint": "^6.8.0",
     "eslint-config-fishbrain": "^0.15.0",
     "eslint-plugin-jest-formatting": "^1.2.0",
+    "fast-check": "^2.0.0",
     "jest": "^25.1.0",
     "prettier": "^2.0.1",
     "rollup": "^2.6.1",
