@@ -1,9 +1,9 @@
-import NP from 'number-precision';
+import { enableBoundaryChecking, times, minus, divide, plus } from 'number-precision';
 
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import { applyOptions } from './utilities';
 
-NP.enableBoundaryChecking(false);
+enableBoundaryChecking(false);
 
 export enum TemperatureUnit {
   kelvin = 'k',
@@ -19,12 +19,12 @@ export interface ITemperature extends IMeasurement {
 }
 
 function celsiusToKelvin(value: number): number {
-  return NP.plus(value, KELIN_OFFSET);
+  return plus(value, KELIN_OFFSET);
 }
 
 function fahrenheitToKelvin(value: number): number {
   // eslint-disable-next-line no-magic-numbers
-  return NP.plus(NP.times(NP.minus(value, 32), NP.divide(5, 9)), KELIN_OFFSET);
+  return plus(times(minus(value, 32), divide(5, 9)), KELIN_OFFSET);
 }
 
 export function createTemperature(
@@ -54,7 +54,7 @@ export function temperatureToCelsius(
   temperature: ITemperature,
   options: ConversionOptions = {},
 ): number {
-  return applyOptions(NP.minus(temperature.value, KELIN_OFFSET), options);
+  return applyOptions(minus(temperature.value, KELIN_OFFSET), options);
 }
 
 export function temperatureToFahrenheit(
@@ -63,7 +63,7 @@ export function temperatureToFahrenheit(
 ): number {
   return applyOptions(
     // eslint-disable-next-line no-magic-numbers
-    NP.plus(NP.times(NP.minus(temperature.value, KELIN_OFFSET), NP.divide(9, 5)), 32),
+    plus(times(minus(temperature.value, KELIN_OFFSET), divide(9, 5)), 32),
     options,
   );
 }

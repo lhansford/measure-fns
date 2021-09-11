@@ -1,4 +1,4 @@
-import NP from 'number-precision';
+import { enableBoundaryChecking, times, divide } from 'number-precision';
 
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import {
@@ -9,7 +9,7 @@ import {
 } from './constants/conversions';
 import { applyOptions } from './utilities';
 
-NP.enableBoundaryChecking(false);
+enableBoundaryChecking(false);
 
 export enum PressureUnit {
   pascal = 'pa',
@@ -25,19 +25,19 @@ export interface IPressure extends IMeasurement {
 }
 
 function hectopascalToPascal(value: number): number {
-  return NP.times(value, PASCALS_IN_HECTOPASCAL);
+  return times(value, PASCALS_IN_HECTOPASCAL);
 }
 
 function barToPascal(value: number): number {
-  return NP.times(value, PASCALS_IN_BAR);
+  return times(value, PASCALS_IN_BAR);
 }
 
 function millibarToPascal(value: number): number {
-  return NP.times(value, PASCALS_IN_MILLIBAR);
+  return times(value, PASCALS_IN_MILLIBAR);
 }
 
 function mmhgToPascal(value: number): number {
-  return NP.times(value, PASCALS_IN_MMHG);
+  return times(value, PASCALS_IN_MMHG);
 }
 
 export function createPressure(value: number, unit: PressureUnit = PressureUnit.pascal): IPressure {
@@ -65,14 +65,14 @@ export function pressureToHectopascal(
   pressure: IPressure,
   options: ConversionOptions = {},
 ): number {
-  return applyOptions(NP.divide(pressure.value, PASCALS_IN_HECTOPASCAL), options);
+  return applyOptions(divide(pressure.value, PASCALS_IN_HECTOPASCAL), options);
 }
 export function pressureToBar(pressure: IPressure, options: ConversionOptions = {}): number {
-  return applyOptions(NP.divide(pressure.value, PASCALS_IN_BAR), options);
+  return applyOptions(divide(pressure.value, PASCALS_IN_BAR), options);
 }
 export function pressureToMillibar(pressure: IPressure, options: ConversionOptions = {}): number {
-  return applyOptions(NP.divide(pressure.value, PASCALS_IN_MILLIBAR), options);
+  return applyOptions(divide(pressure.value, PASCALS_IN_MILLIBAR), options);
 }
 export function pressureToMmhg(pressure: IPressure, options: ConversionOptions = {}): number {
-  return applyOptions(NP.divide(pressure.value, PASCALS_IN_MMHG), options);
+  return applyOptions(divide(pressure.value, PASCALS_IN_MMHG), options);
 }

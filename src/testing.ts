@@ -1,6 +1,3 @@
-/* eslint-disable compat/compat */
-/* eslint-disable jest/no-export */
-/* eslint-disable import/no-extraneous-dependencies */
 import * as fc from 'fast-check';
 
 // I.e. the conversion is straight multiplication or division
