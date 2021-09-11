@@ -1,4 +1,4 @@
-import NP from 'number-precision';
+import { enableBoundaryChecking, divide, times } from 'number-precision';
 
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import {
@@ -10,7 +10,7 @@ import {
 } from './constants/conversions';
 import { applyOptions } from './utilities';
 
-NP.enableBoundaryChecking(false);
+enableBoundaryChecking(false);
 
 export enum LengthUnit {
   metres = 'm',
@@ -27,23 +27,23 @@ export interface ILength extends IMeasurement {
 }
 
 function centimetresToMetres(value: number): number {
-  return NP.divide(value, CENTIMETRES_IN_METRE);
+  return divide(value, CENTIMETRES_IN_METRE);
 }
 
 function feetToMetres(value: number): number {
-  return NP.divide(value, FEET_IN_METRE);
+  return divide(value, FEET_IN_METRE);
 }
 
 function inchesToMetres(value: number): number {
-  return NP.divide(value, INCHES_IN_METRE);
+  return divide(value, INCHES_IN_METRE);
 }
 
 function kilometresToMetres(value: number): number {
-  return NP.divide(value, KILOMETRES_IN_METRE);
+  return divide(value, KILOMETRES_IN_METRE);
 }
 
 function milesToMetres(value: number): number {
-  return NP.divide(value, MILES_IN_METRE);
+  return divide(value, MILES_IN_METRE);
 }
 
 export function createLength(value: number, unit: LengthUnit = LengthUnit.metres): ILength {
@@ -70,21 +70,21 @@ export function lengthToMetres(_length: ILength, options: ConversionOptions = {}
 }
 
 export function lengthToCentimetres(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(_length.value, CENTIMETRES_IN_METRE), options);
+  return applyOptions(times(_length.value, CENTIMETRES_IN_METRE), options);
 }
 
 export function lengthToFeet(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(_length.value, FEET_IN_METRE), options);
+  return applyOptions(times(_length.value, FEET_IN_METRE), options);
 }
 
 export function lengthToInches(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(_length.value, INCHES_IN_METRE), options);
+  return applyOptions(times(_length.value, INCHES_IN_METRE), options);
 }
 
 export function lengthToKilometres(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(_length.value, KILOMETRES_IN_METRE), options);
+  return applyOptions(times(_length.value, KILOMETRES_IN_METRE), options);
 }
 
 export function lengthToMiles(_length: ILength, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(_length.value, MILES_IN_METRE), options);
+  return applyOptions(times(_length.value, MILES_IN_METRE), options);
 }

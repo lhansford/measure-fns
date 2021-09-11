@@ -1,4 +1,4 @@
-import NP from 'number-precision';
+import { enableBoundaryChecking, divide, times } from 'number-precision';
 
 import { IMeasurement, MeasurementType, ConversionOptions } from './interfaces';
 import {
@@ -10,7 +10,7 @@ import {
 } from './constants/conversions';
 import { applyOptions } from './utilities';
 
-NP.enableBoundaryChecking(false);
+enableBoundaryChecking(false);
 
 export enum SpeedUnit {
   metresPerSecond = 'ms',
@@ -26,20 +26,20 @@ export interface ISpeed extends IMeasurement {
 }
 
 function kmhToMs(value: number): number {
-  return NP.divide(value, SECONDS_IN_HOUR, KILOMETRES_IN_METRE);
+  return divide(value, SECONDS_IN_HOUR, KILOMETRES_IN_METRE);
 }
 
 function mphToMs(value: number): number {
-  return NP.divide(value, SECONDS_IN_HOUR, MILES_IN_METRE);
+  return divide(value, SECONDS_IN_HOUR, MILES_IN_METRE);
 }
 
 function knotsToMs(value: number): number {
-  return NP.divide(value, SECONDS_IN_HOUR, NAUTICAL_MILES_IN_METRE);
+  return divide(value, SECONDS_IN_HOUR, NAUTICAL_MILES_IN_METRE);
 }
 
 function fpsToMs(value: number): number {
   // eslint-disable-next-line no-magic-numbers
-  return NP.divide(value, FEET_IN_METRE);
+  return divide(value, FEET_IN_METRE);
 }
 
 export function createSpeed(value: number, unit: SpeedUnit = SpeedUnit.metresPerSecond): ISpeed {
@@ -64,14 +64,14 @@ export function speedToMs(speed: ISpeed, options: ConversionOptions = {}): numbe
 }
 
 export function speedToKmh(speed: ISpeed, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(speed.value, SECONDS_IN_HOUR, KILOMETRES_IN_METRE), options);
+  return applyOptions(times(speed.value, SECONDS_IN_HOUR, KILOMETRES_IN_METRE), options);
 }
 export function speedToMph(speed: ISpeed, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(speed.value, SECONDS_IN_HOUR, MILES_IN_METRE), options);
+  return applyOptions(times(speed.value, SECONDS_IN_HOUR, MILES_IN_METRE), options);
 }
 export function speedToKnots(speed: ISpeed, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(speed.value, SECONDS_IN_HOUR, NAUTICAL_MILES_IN_METRE), options);
+  return applyOptions(times(speed.value, SECONDS_IN_HOUR, NAUTICAL_MILES_IN_METRE), options);
 }
 export function speedToFps(speed: ISpeed, options: ConversionOptions = {}): number {
-  return applyOptions(NP.times(speed.value, FEET_IN_METRE), options);
+  return applyOptions(times(speed.value, FEET_IN_METRE), options);
 }
