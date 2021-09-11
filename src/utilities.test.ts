@@ -2,10 +2,6 @@ import { applyOptions } from './utilities';
 
 describe('applyOptions', () => {
   describe('.round', () => {
-    describe('with an invalid value', () => {
-      it.skip('');
-    });
-
     describe('when .round is true', () => {
       const options = { round: true };
 
