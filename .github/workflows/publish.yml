@@ -50,18 +50,19 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
-      - if: steps.npm_publish.outputs.type != 'none'
-        name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: changelog
 
       - name: Create Release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: ${{steps.github_release.outputs.changelog}}
+        id: create_release
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
