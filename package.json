@@ -54,6 +54,7 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
+    "@semantic-release/git": "^9.0.1",
     "@types/jest": "^27.0.1",
     "babel-jest": "^27.1.1",
     "eslint": "^7.32.0",
@@ -65,8 +66,8 @@
     "rollup": "^2.56.3",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.4.3",
-    "semantic-release": "^18.0.0"
+    "semantic-release": "^18.0.0",
+    "typescript": "^4.4.3"
   },
   "bugs": {
     "url": "https://github.com/lhansford/measure-fns/issues"
