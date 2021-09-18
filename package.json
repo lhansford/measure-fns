@@ -30,7 +30,8 @@
           ],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
-      ]
+      ],
+      "@saithodev/semantic-release-backmerge"
     ]
   },
   "scripts": {
@@ -54,6 +55,7 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
+    "@saithodev/semantic-release-backmerge": "^1.5.3",
     "@semantic-release/git": "^9.0.1",
     "@types/jest": "^27.0.1",
     "babel-jest": "^27.1.1",
