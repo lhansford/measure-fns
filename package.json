@@ -1,6 +1,6 @@
 {
   "name": "measure-fns",
-  "version": "0.4.4",
+  "version": "1.0.0",
   "description": "Functions for conversion and handling of measurements",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,24 @@
     "url": "https://github.com/lhansford/measure-fns.git"
   },
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   },
   "scripts": {
     "build": "rollup --config ./config/rollup.config.js",
