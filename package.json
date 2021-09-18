@@ -13,27 +13,6 @@
     "type": "git",
     "url": "https://github.com/lhansford/measure-fns.git"
   },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "package.json"
-          ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ],
-      "@saithodev/semantic-release-backmerge"
-    ]
-  },
   "scripts": {
     "build": "rollup --config ./config/rollup.config.js",
     "lint": "node_modules/eslint/bin/eslint.js src --ext .js,.ts",
