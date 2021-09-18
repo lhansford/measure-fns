@@ -1,6 +1,6 @@
 {
   "name": "measure-fns",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Functions for conversion and handling of measurements",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -58,6 +58,6 @@
     "functional"
   ],
   "dependencies": {
-    "number-precision": "^1.4.0"
+    "number-precision": "^1.5.1"
   }
 }
