@@ -13,6 +13,9 @@
     "type": "git",
     "url": "https://github.com/lhansford/measure-fns.git"
   },
+  "release": {
+    "branches": ["main"]
+  },
   "scripts": {
     "build": "rollup --config ./config/rollup.config.js",
     "lint": "node_modules/eslint/bin/eslint.js src --ext .js,.ts",
@@ -22,7 +25,7 @@
     "test:watch": "jest --watchAll",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check -- --watch",
-    "semantic-release": "semantic-release"
+    "release": "yarn semantic-release"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
