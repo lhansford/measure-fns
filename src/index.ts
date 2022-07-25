@@ -1,3 +1,4 @@
+export * from './coordinates';
 export * from './length';
 export * from './mass';
 export * from './pressure';
