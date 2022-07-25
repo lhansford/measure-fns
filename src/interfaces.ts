@@ -1,9 +1,10 @@
 export enum MeasurementType {
-  mass = 'mass',
+  coordinates = 'coordinates',
   length = 'length',
-  temperature = 'temperature',
+  mass = 'mass',
   pressure = 'pressure',
   speed = 'speed',
+  temperature = 'temperature',
 }
 
 export interface IMeasurement {
