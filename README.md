@@ -2,4 +2,4 @@
 
 ## Releasing
 
-This package will publish to NPM whenever the version number is updated in `main` branch.
+To release merge `develop` into `main` (commits should follow correct structure)
